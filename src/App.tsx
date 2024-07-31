@@ -1,12 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as C from './App.styles';
 import { Item } from './types/Items';
 import { Category } from './types/Category';
 import { categories } from './data/categories';
 import { items } from './data/items';
+import { getCurrentMonth, filterListByMonth } from './helpers/dateFilter';
+import { TableArea } from './components/TableArea';
 
 function App() {
   const [list, setList] = useState(items);
+  const [filteredList, steFilteredList] = useState<Item[]>([]);
+  const [currentMonth, setCurrentMonth] = useState(getCurrentMonth()); /* data , mes atual */
+
+  useEffect(() => {
+    steFilteredList(filterListByMonth(list, currentMonth));
+  }, [list, currentMonth]);
 
   return (
     <C.Container>
@@ -18,7 +26,7 @@ function App() {
 
         {/* area de inserção*/}
 
-        {/* area de itens*/}
+        <TableArea list={filteredList} />
 
 
       </C.Body>
