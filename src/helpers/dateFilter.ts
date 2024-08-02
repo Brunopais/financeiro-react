@@ -24,4 +24,10 @@ export const filterListByMonth = (list: Item[], date: string): Item[] => {
 
     return newlist;
 
+
+}
+
+export const formatDate = (date: Date): string => {
+
+
 }
