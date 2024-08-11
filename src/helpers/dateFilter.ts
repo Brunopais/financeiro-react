@@ -1,30 +1,24 @@
-import { Item } from '../types/Items';
+import { Item } from '../types/Item';
 
-/* data , ano mes atual */
 export const getCurrentMonth = () => {
     let now = new Date();
-    return `${now.getFullYear()}-${now.getMonth() + 1}`;
-
+    return `${now.getFullYear()}-${now.getMonth()+1}`;
 }
 
-/* filtrar lista pelo mes */
 export const filterListByMonth = (list: Item[], date: string): Item[] => {
-    let newlist: Item[] = [];
+    let newList: Item[] = [];
     let [year, month] = date.split('-');
 
-    for (let i in list) {
-        if (
+    for(let i in list) {
+        if(
             list[i].date.getFullYear() === parseInt(year) &&
             (list[i].date.getMonth() + 1) === parseInt(month)
         ) {
-            newlist.push(list[i]);
+            newList.push(list[i]);
         }
     }
 
-
-    return newlist;
-
-
+    return newList;
 }
 
 export const formatDate = (date: Date): string => {
@@ -33,6 +27,16 @@ export const formatDate = (date: Date): string => {
     let day = date.getDate();
 
     return `${addZeroToDate(day)}/${addZeroToDate(month)}/${year}`;
-
 }
 const addZeroToDate = (n: number): string => n < 10 ? `0${n}` : `${n}`;
+
+export const formatCurrentMonth = (currentMonth: string): string => {
+    let [year, month] = currentMonth.split('-');
+    let months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+    return `${months[parseInt(month) - 1]} de ${year}`;
+}
+
+export const newDateAdjusted = (dateField: string) => {
+    let [year, month, day] = dateField.split('-')
+    return new Date(parseInt(year), parseInt(month) - 1, parseInt(day))
+  }

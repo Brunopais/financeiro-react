@@ -2,23 +2,21 @@ import styled from 'styled-components';
 
 export const Container = styled.div``;
 
-//cabeçalho
 export const Header = styled.div`
-background-color: darkblue;
-height: 150px;
-text-align: center;
+    background-color: darkblue;
+    height: 150px;
+    text-align: center;
 `;
 
-// texto cabeçalho
 export const HeaderText = styled.h1`
     margin: 0;
     padding: 0;
-    color: #fff;
-    padding-top: 30px
-    `;
+    color: #FFF;
+    padding-top: 30px;
+`;
 
 export const Body = styled.div`
     margin: auto;
-    max-width:980px;
+    max-width: 980px;
     margin-bottom: 50px;
 `;
